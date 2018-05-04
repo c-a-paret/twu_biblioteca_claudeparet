@@ -1,0 +1,21 @@
+# Ignored files
+
+# Compiled class files
+*.class
+
+# Log file
+*.log
+
+# Other
+*.ctxt
+*.mtj.tmp/
+
+# Packages
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+*.iml
