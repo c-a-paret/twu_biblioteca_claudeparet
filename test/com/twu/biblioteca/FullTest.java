@@ -58,4 +58,14 @@ public class FullTest {
     }
 
 
+
+    // Library Tests
+
+    @Test
+    public void testLibraryOpensWithThreeBooksOnShelf() {
+        Library testLibrary = new Library();
+        assertEquals(3, testLibrary.shelf.size());
+    }
+
+
 }
