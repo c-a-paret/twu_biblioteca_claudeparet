@@ -8,6 +8,8 @@ import static org.junit.Assert.*;
 
 public class FullTest {
 
+    // Book Tests
+
     Book testBook;
 
     @Before
@@ -48,6 +50,11 @@ public class FullTest {
     public void testBookCheckedOutSuccess() {
         testBook.checkOut();
         assertTrue(testBook.isCheckedOut());
+    }
+
+    @Test
+    public void testBookCheckedInFailure() {
+        assertFalse(testBook.checkIn());
     }
 
 
