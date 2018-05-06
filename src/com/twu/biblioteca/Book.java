@@ -3,15 +3,33 @@ package com.twu.biblioteca;
 public class Book {
 
     Details details;
+    private boolean checkedOut = false;
 
     public Book(String title, String author, int yearPublished) {
         this.details = new Details(title, author, yearPublished);
     }
 
+    // Getters
 
     public Details getDetails() {
         return this.details;
     }
+
+    public boolean isCheckedOut() {
+        return this.checkedOut;
+    }
+
+
+
+    // Methods
+
+    public void checkOut() {
+        this.checkedOut = true;
+        System.out.println("Book successfully checked out.");
+    }
+
+
+    // Override Methods
 
     @Override
     public String toString() {
@@ -28,4 +46,6 @@ public class Book {
                 this.details.getAuthor().equals(compareBook.details.getAuthor()) &&
                 (this.details.getYear() == compareBook.details.getYear()));
     }
+
+
 }

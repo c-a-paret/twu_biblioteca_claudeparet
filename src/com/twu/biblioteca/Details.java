@@ -12,6 +12,9 @@ public class Details {
         this.year = year;
     }
 
+
+    // Getters
+
     public String getTitle() {
         return this.title;
     }
@@ -23,6 +26,8 @@ public class Details {
     public int getYear() {
         return this.year;
     }
+
+    // Override Methods
 
     @Override
     public String toString() {

@@ -39,5 +39,16 @@ public class FullTest {
         assertEquals(2000, testBook.getDetails().getYear());
     }
 
+    @Test
+    public void testBookNotCheckedOut() {
+        assertFalse(testBook.isCheckedOut());
+    }
+
+    @Test
+    public void testBookCheckedOutSuccess() {
+        testBook.checkOut();
+        assertTrue(testBook.isCheckedOut());
+    }
+
 
 }
