@@ -64,7 +64,37 @@ public class FullTest {
     @Test
     public void testLibraryOpensWithThreeBooksOnShelf() {
         Library testLibrary = new Library();
-        assertEquals(3, testLibrary.shelf.size());
+        assertEquals(3, testLibrary.getCatalog().size());
+    }
+
+    @Test
+    public void testAllInitialBooksNotCheckedOut() {
+        Library testLibrary = new Library();
+        assertFalse(testLibrary.getCatalog().get(0).isCheckedOut() &&
+                             testLibrary.getCatalog().get(1).isCheckedOut() &&
+                             testLibrary.getCatalog().get(2).isCheckedOut());
+    }
+
+
+    @Test
+    public void testCheckoutBookInCatalog() {
+        Library testLibrary = new Library();
+        testLibrary.getCatalog().get(0).checkOut();
+        assertTrue(testLibrary.getCatalog().get(0).isCheckedOut());
+    }
+
+
+    @Test
+    public void testGetOnlyAvailableBooks() {
+        Library testLibrary = new Library();
+
+        assertEquals(3, testLibrary.getAvailableBooks().size());
+
+        testLibrary.getCatalog().get(0).checkOut();
+        assertEquals(2, testLibrary.getAvailableBooks().size());
+
+        testLibrary.getCatalog().get(1).checkOut();
+        assertEquals(1, testLibrary.getAvailableBooks().size());
     }
 
 
