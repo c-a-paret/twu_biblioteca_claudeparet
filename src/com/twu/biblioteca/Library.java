@@ -25,6 +25,20 @@ public class Library {
         return availableTitles;
     }
 
+    public void seeAllAvailableBooks() {
+        ArrayList<Book> availableTitles = getAvailableBooks();
+        if (availableTitles.size() > 0) {
+            System.out.printf("%-20s %15s %7s", "Title", "Author", "Year\n");
+            System.out.printf("============================================\n");
+            for (int i = 0; i < availableTitles.size(); i++) {
+                System.out.println(availableTitles.get(i).getDetails());
+            }
+        } else {
+            System.out.println("No titles are available!");
+        }
+
+    }
+
     public List<Book> getCatalog() {
         return this.catalog;
     }

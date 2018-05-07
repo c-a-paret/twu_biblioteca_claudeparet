@@ -31,7 +31,8 @@ public class Details {
 
     @Override
     public String toString() {
-        return "Title: " + this.getTitle() + "\nAuthor: " + this.getAuthor() + "\nYear Published: " + this.getYear();
+        //return "Title: " + this.getTitle() + "\nAuthor: " + this.getAuthor() + "\nYear Published: " + this.getYear();
+        return String.format("%-20s %15s %6d", this.getTitle(), this.getTitle(), this.year);
     }
 
 }
