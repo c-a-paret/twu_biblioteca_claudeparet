@@ -42,4 +42,16 @@ public class Library {
     public List<Book> getCatalog() {
         return this.catalog;
     }
+
+    public void checkoutBook(int ID) {
+        for (Book avaialbelBook : getAvailableBooks()) {
+            if (avaialbelBook.getDetails().getID() == ID) {
+                for (Book catalogBook : this.getCatalog()) {
+                    if (catalogBook.getDetails().getID() == ID) {
+                        catalogBook.checkOut();
+                    }
+                }
+            }
+        }
+    }
 }

@@ -61,6 +61,8 @@ public class FullTest {
 
     // Library Tests
 
+    // TODO: 07/05/2018 Make BEFORE for Library object
+
     @Test
     public void testLibraryOpensWithThreeBooksOnShelf() {
         Library testLibrary = new Library();
@@ -100,8 +102,16 @@ public class FullTest {
     @Test
     public void testSelectAndCheckoutBook() {
         Library testLibrary = new Library();
+        testLibrary.checkoutBook(1234);
+        assertTrue(testLibrary.getCatalog().get(0).isCheckedOut());
+    }
 
-
+    @Test
+    public void testBookNotAvailableAfterCheckout() {
+        Library testLibrary = new Library();
+        assertEquals(3, testLibrary.getAvailableBooks().size());
+        testLibrary.checkoutBook(1234);
+        assertEquals(2, testLibrary.getAvailableBooks().size());
     }
 
 
