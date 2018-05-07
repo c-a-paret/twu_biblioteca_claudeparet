@@ -25,12 +25,12 @@ public class Book {
 
     public void checkOut() {
         this.checkedOut = true;
-        System.out.println("Book successfully checked out.");
+        System.out.println("Thank You! Enjoy the book.");
     }
 
     public void checkIn() {
         this.checkedOut = false;
-        System.out.println("Book successfully returned.");
+        System.out.println("Thank you for returning the book.");
     }
 
 

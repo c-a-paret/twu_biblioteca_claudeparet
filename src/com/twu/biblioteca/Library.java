@@ -43,24 +43,30 @@ public class Library {
         return this.catalog;
     }
 
-    public void checkoutBook(int ID) {
+    public boolean checkoutBook(int ID) {
         for (Book availableBook : getAvailableBooks()) {
             if (availableBook.getDetails().getID() == ID) {
                 for (Book catalogBook : this.getCatalog()) {
                     if (catalogBook.getDetails().getID() == ID) {
                         catalogBook.checkOut();
+                        return true;
                     }
                 }
             }
         }
+        System.out.println("That book is not available.");
+        return false;
     }
 
-    public void returnBook(int ID) {
+    public boolean returnBook(int ID) {
         for (Book catalogBook : getCatalog()) {
             if (catalogBook.isCheckedOut() && catalogBook.getDetails().getID() == ID) {
                 catalogBook.checkIn();
+                return true;
             }
         }
+        System.out.println("That is not a valid book to return.");
+        return false;
     }
 
 }

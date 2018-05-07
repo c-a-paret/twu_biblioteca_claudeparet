@@ -110,12 +110,24 @@ public class FullTest {
     }
 
     @Test
-    public void testReturnBook() {
+    public void testCheckoutBookFails() {
+        Library testLibrary = new Library();
+        assertFalse(testLibrary.checkoutBook(9999));
+    }
+
+    @Test
+    public void testReturnBookSuccessful() {
         Library testLibrary = new Library();
         testLibrary.checkoutBook(1234);
         assertTrue(testLibrary.getCatalog().get(0).isCheckedOut());
         testLibrary.returnBook(1234);
         assertFalse(testLibrary.getCatalog().get(0).isCheckedOut());
+    }
+
+    @Test
+    public void testReturnBookFails() {
+        Library testLibrary = new Library();
+        assertFalse(testLibrary.returnBook(9999));
     }
 
 
