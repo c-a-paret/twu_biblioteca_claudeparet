@@ -5,8 +5,8 @@ public class Book {
     Details details;
     private boolean checkedOut = false;
 
-    public Book(String title, String author, int yearPublished) {
-        this.details = new Details(title, author, yearPublished);
+    public Book(String title, String author, int yearPublished, int ID) {
+        this.details = new Details(title, author, yearPublished, ID);
     }
 
     // Getters
@@ -45,7 +45,8 @@ public class Book {
         return "Book object with:\n" +
                 "Title: " + this.details.getTitle() + "\n" +
                 "Author: " + this.details.getAuthor() + "\n" +
-                "Year Published: " + this.details.getYear();
+                "Year Published: " + this.details.getYear() + "\n" +
+                "ID: " + this.details.getID();
     }
 
     @Override
@@ -53,7 +54,8 @@ public class Book {
         Book compareBook = (Book) object;
         return (this.details.getTitle().equals(compareBook.details.getTitle()) &&
                 this.details.getAuthor().equals(compareBook.details.getAuthor()) &&
-                (this.details.getYear() == compareBook.details.getYear()));
+                (this.details.getYear() == compareBook.details.getYear()) &&
+                 this.details.getID() == compareBook.details.getID());
     }
 
 

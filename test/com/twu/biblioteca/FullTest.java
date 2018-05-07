@@ -14,7 +14,7 @@ public class FullTest {
 
     @Before
     public void setUp() {
-        this.testBook = new Book("Title", "Author", 2000);
+        this.testBook = new Book("Title", "Author", 2000, 1234);
     }
 
     @Test
@@ -24,13 +24,13 @@ public class FullTest {
 
     @Test
     public void testBooksAreEqual() {
-        Book comparisonBook = new Book("Title", "Author", 2000);
+        Book comparisonBook = new Book("Title", "Author", 2000, 1234);
         assertTrue(testBook.equals(comparisonBook));
     }
 
     @Test
     public void testBooksAreNotEqual() {
-        Book comparisonBook = new Book("Title2", "Author2", 2001);
+        Book comparisonBook = new Book("Title2", "Author2", 2001, 4321);
         assertFalse(testBook.equals(comparisonBook));
     }
 
@@ -95,6 +95,13 @@ public class FullTest {
 
         testLibrary.getCatalog().get(1).checkOut();
         assertEquals(1, testLibrary.getAvailableBooks().size());
+    }
+
+    @Test
+    public void testSelectAndCheckoutBook() {
+        Library testLibrary = new Library();
+
+
     }
 
 

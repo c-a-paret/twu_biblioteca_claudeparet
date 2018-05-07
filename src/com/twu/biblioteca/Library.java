@@ -9,9 +9,9 @@ public class Library {
 
     public Library() {
         this.catalog = new ArrayList<>();
-        this.catalog.add(new Book("Title1", "Author1", 2001));
-        this.catalog.add(new Book("Title2", "Author2", 2002));
-        this.catalog.add(new Book("Title3", "Author3", 2003));
+        this.catalog.add(new Book("Title1", "Author1", 2001, 1234));
+        this.catalog.add(new Book("Title2", "Author2", 2002, 2345));
+        this.catalog.add(new Book("Title3", "Author3", 2003, 3456));
     }
 
 
@@ -28,8 +28,8 @@ public class Library {
     public void seeAllAvailableBooks() {
         ArrayList<Book> availableTitles = getAvailableBooks();
         if (availableTitles.size() > 0) {
-            System.out.printf("%-20s %15s %7s", "Title", "Author", "Year\n");
-            System.out.printf("============================================\n");
+            System.out.printf("%-20s %15s %6s %6s", "Title", "Author", "Year", "ID\n");
+            System.out.printf("===================================================\n");
             for (int i = 0; i < availableTitles.size(); i++) {
                 System.out.println(availableTitles.get(i).getDetails());
             }

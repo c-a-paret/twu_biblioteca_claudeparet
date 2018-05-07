@@ -5,11 +5,13 @@ public class Details {
     private String title;
     private String author;
     private int year;
+    private int ID;
 
-    public Details(String title, String author, int year) {
+    public Details(String title, String author, int year, int ID) {
         this.title = title;
         this.author = author;
         this.year = year;
+        this.ID = ID;
     }
 
 
@@ -27,12 +29,16 @@ public class Details {
         return this.year;
     }
 
+    public int getID() {
+        return this.ID;
+    }
+
     // Override Methods
 
     @Override
     public String toString() {
         //return "Title: " + this.getTitle() + "\nAuthor: " + this.getAuthor() + "\nYear Published: " + this.getYear();
-        return String.format("%-20s %15s %6d", this.getTitle(), this.getTitle(), this.year);
+        return String.format("%-20s %15s %6d %6s", this.getTitle(), this.getTitle(), this.getYear(), this.getID());
     }
 
 }
