@@ -34,7 +34,7 @@ public class Library {
                 System.out.println(availableTitles.get(i).getDetails());
             }
         } else {
-            System.out.println("No titles are available!");
+            System.out.println("No titles are available to check out! Please wait until someone returns a book.");
         }
 
     }
