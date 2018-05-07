@@ -52,11 +52,6 @@ public class FullTest {
         assertTrue(testBook.isCheckedOut());
     }
 
-    @Test
-    public void testBookCheckedInFailure() {
-        assertFalse(testBook.checkIn());
-    }
-
 
 
     // Library Tests
@@ -112,6 +107,15 @@ public class FullTest {
         assertEquals(3, testLibrary.getAvailableBooks().size());
         testLibrary.checkoutBook(1234);
         assertEquals(2, testLibrary.getAvailableBooks().size());
+    }
+
+    @Test
+    public void testReturnBook() {
+        Library testLibrary = new Library();
+        testLibrary.checkoutBook(1234);
+        assertTrue(testLibrary.getCatalog().get(0).isCheckedOut());
+        testLibrary.returnBook(1234);
+        assertFalse(testLibrary.getCatalog().get(0).isCheckedOut());
     }
 
 

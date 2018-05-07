@@ -6,11 +6,6 @@ public class BibliotecaApp {
 
         Library l1 = new Library();
 
-        l1.seeAllAvailableBooks();
-        l1.checkoutBook(1234);
-        l1.seeAllAvailableBooks();
-        l1.checkoutBook(3456);
-        l1.seeAllAvailableBooks();
 
     }
 

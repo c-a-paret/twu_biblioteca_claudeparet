@@ -44,8 +44,8 @@ public class Library {
     }
 
     public void checkoutBook(int ID) {
-        for (Book avaialbelBook : getAvailableBooks()) {
-            if (avaialbelBook.getDetails().getID() == ID) {
+        for (Book availableBook : getAvailableBooks()) {
+            if (availableBook.getDetails().getID() == ID) {
                 for (Book catalogBook : this.getCatalog()) {
                     if (catalogBook.getDetails().getID() == ID) {
                         catalogBook.checkOut();
@@ -54,4 +54,13 @@ public class Library {
             }
         }
     }
+
+    public void returnBook(int ID) {
+        for (Book catalogBook : getCatalog()) {
+            if (catalogBook.isCheckedOut() && catalogBook.getDetails().getID() == ID) {
+                catalogBook.checkIn();
+            }
+        }
+    }
+
 }

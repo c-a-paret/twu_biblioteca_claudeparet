@@ -28,13 +28,9 @@ public class Book {
         System.out.println("Book successfully checked out.");
     }
 
-    public boolean checkIn() {
-        if (this.checkedOut) {
-            this.checkedOut = false;
-            System.out.println("Book successfully checked in.");
-            return true;
-        }
-        return false;
+    public void checkIn() {
+        this.checkedOut = false;
+        System.out.println("Book successfully returned.");
     }
 
 
