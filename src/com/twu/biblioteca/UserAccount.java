@@ -3,31 +3,29 @@ package com.twu.biblioteca;
 public class UserAccount {
 
     // Fields
-    private String firstName;
-    private String surname;
-    private int libraryNumber;
-    private int PIN;
+    private UserDetails details;
+    private PIN security;
 
 
     // Constructor
-    public UserAccount(String firstName, String surname, int libraryNumber, int PIN) {
-        this.firstName = firstName;
-        this.surname = surname;
-        this.libraryNumber = libraryNumber;
-        this.PIN = PIN;
+    public UserAccount(String firstName, String surname, String email, String phone, int libraryNumber, int PIN) {
+        this.details = new UserDetails(firstName, surname, email, phone, libraryNumber);
+        this.security = new PIN(PIN);
     }
 
 
     // Getters
-    public String getFirstName() {
-        return this.firstName;
+    public UserDetails getDetails() {
+        return this.details;
     }
 
-    public String getSurname() {
-        return this.surname;
+    public PIN getSecurity() {
+        return this.security;
     }
 
-    public int getLibraryNumber() {
-        return this.libraryNumber;
-    }
+    // security and Authorisation Methods
+
+
+
+
 }
