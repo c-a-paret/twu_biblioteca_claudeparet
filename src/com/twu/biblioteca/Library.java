@@ -56,21 +56,26 @@ public class Library {
 
     // Setters
 
-    public void setUserSessionActive(boolean userSessionActive) {
+    private void setUserSessionActive(boolean userSessionActive) {
         this.userSessionActive = userSessionActive;
     }
 
 
     // User Session Methods
-    public void userSignIn(int libraryNumber, int PIN) {
+    public boolean userSignIn(int libraryNumber, int PIN) {
         for (UserAccount user : this.userList) {
             if ((user.getDetails().getLibraryNumber() == libraryNumber) && (user.authorise(PIN))) {
                 this.currentUser = libraryNumber;
                 this.setUserSessionActive(true);
-            } else {
-                System.out.println("Membership number or PIN incorrect! Please try again!");
+                System.out.println("\nWelcome " + user.getDetails().getFirstName() + " " + user.getDetails().getSurname() + "!");
+                return true;
             }
         }
+        if (!userSessionActive) {
+            System.out.println("Membership number or PIN incorrect! Please try again!");
+
+        }
+        return false;
     }
 
     public void userSignOut() {

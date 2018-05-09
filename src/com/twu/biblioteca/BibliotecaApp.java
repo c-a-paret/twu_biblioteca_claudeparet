@@ -10,7 +10,33 @@ public class BibliotecaApp {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nWelcome to Biblioteca!");
 
+        boolean loginPage = true;
         boolean running = false;
+
+
+        while (loginPage) {
+            System.out.println("Select an option:\n1. Sign In\n2. Quit");
+            System.out.print("\nEnter your choice (number): ");
+            int userFirstChoice = scanner.nextInt();
+
+            switch (userFirstChoice) {
+                case 1: // Sign in
+                    System.out.print("\nEnter your Library Membership Number: ");
+                    int userLibraryMembershipNumber = scanner.nextInt();
+                    System.out.print("\nEnter your PIN: ");
+                    int userPIN = scanner.nextInt();
+                    if (library.userSignIn(userLibraryMembershipNumber, userPIN)){
+                        loginPage = false;
+                        running = true;
+                    }
+                    break;
+                case 2: // Quit
+                    System.out.println("\nThank you for using the Biblioteca app!");
+                    loginPage = false;
+                    break;
+            }
+        }
+
 
         while (running) {
 
@@ -27,9 +53,9 @@ public class BibliotecaApp {
                 scanner.next();
             }
 
-            int userChoice = scanner.nextInt();
+            int userSecondChoice = scanner.nextInt();
 
-            switch (userChoice) {
+            switch (userSecondChoice) {
                 case 1: // List Books
                         library.seeAllAvailableBooks();
                         break;
