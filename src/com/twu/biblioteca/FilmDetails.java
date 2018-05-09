@@ -16,10 +16,6 @@ public class FilmDetails extends Details {
         return this.director;
     }
 
-    public int getRating() {
-        return this.rating;
-    }
-
     @Override
     public String toString() {
         return String.format("%-30s %-6d %15s %4d %6d", this.getTitle(), this.getYear(), this.getDirector(), this.getRating(), this.getID());
