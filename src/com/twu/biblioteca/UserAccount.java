@@ -19,12 +19,14 @@ public class UserAccount {
         return this.details;
     }
 
-    public PIN getSecurity() {
+    private PIN getSecurity() {
         return this.security;
     }
 
-    // security and Authorisation Methods
-
+    // Methods
+    public boolean authorise(int PIN) {
+        return this.getSecurity().authorise(PIN);
+    }
 
 
 

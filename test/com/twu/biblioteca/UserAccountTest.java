@@ -23,4 +23,14 @@ public class UserAccountTest {
                             testUser.getDetails().getLibraryNumber() == 1234567);
     }
 
+    @Test
+    public void testUserAccountAuthoriseSuccess() {
+        assertTrue(testUser.authorise(1234));
+    }
+
+    @Test
+    public void testUserAccountAuthoriseFailure() {
+        assertFalse(testUser.authorise(9999));
+    }
+
 }
