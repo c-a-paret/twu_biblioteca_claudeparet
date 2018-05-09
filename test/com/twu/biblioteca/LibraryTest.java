@@ -7,8 +7,6 @@ import static org.junit.Assert.*;
 
 public class LibraryTest {
 
-//    private Book testBook;
-//    private Film testFilm;
     private Library testLibrary;
 
     @Before
@@ -18,10 +16,10 @@ public class LibraryTest {
         this.testLibrary = new Library();
     }
 
-    // Library Tests
+    // Library BOOK catalog tests
 
     @Test
-    public void testLibraryOpensWithThreeBooksOnShelf() {
+    public void testLibraryOpensWithThreeBooksInCatalog() {
         assertEquals(3, testLibrary.getCatalogBooks().size());
     }
 
@@ -32,13 +30,11 @@ public class LibraryTest {
                 testLibrary.getCatalogBooks().get(2).isCheckedOut());
     }
 
-
     @Test
     public void testCheckoutBookInCatalog() {
         testLibrary.getCatalogBooks().get(0).checkOut();
         assertTrue(testLibrary.getCatalogBooks().get(0).isCheckedOut());
     }
-
 
     @Test
     public void testGetOnlyAvailableBooks() {
@@ -83,4 +79,65 @@ public class LibraryTest {
     }
 
 
+    // Library FILM catalog tests
+
+    @Test
+    public void testLibraryOpensWithThreeFilmsInCatalog() {
+        assertEquals(3, testLibrary.getCatalogFilms().size());
+    }
+
+    @Test
+    public void testAllInitialFilmsNotCheckedOut() {
+        assertFalse(testLibrary.getCatalogFilms().get(0).isCheckedOut() &&
+                              testLibrary.getCatalogFilms().get(1).isCheckedOut() &&
+                              testLibrary.getCatalogFilms().get(2).isCheckedOut());
+    }
+
+    @Test
+    public void testCheckoutFilmInCatalog() {
+        testLibrary.getCatalogFilms().get(0).checkOut();
+        assertTrue(testLibrary.getCatalogFilms().get(0).isCheckedOut());
+    }
+
+    @Test
+    public void testGetOnlyAvailableFilms() {
+        assertEquals(3, testLibrary.getAvailableFilms().size());
+
+        testLibrary.getCatalogFilms().get(0).checkOut();
+        assertEquals(2, testLibrary.getAvailableFilms().size());
+
+        testLibrary.getCatalogFilms().get(1).checkOut();
+        assertEquals(1, testLibrary.getAvailableFilms().size());
+    }
+
+    @Test
+    public void testSelectAndCheckoutFilm() {
+        testLibrary.checkoutFilm(4321);
+        assertTrue(testLibrary.getCatalogFilms().get(0).isCheckedOut());
+    }
+
+    @Test
+    public void testFilmNotAvailableAfterCheckout() {
+        assertEquals(3, testLibrary.getAvailableFilms().size());
+        testLibrary.checkoutFilm(4321);
+        assertEquals(2, testLibrary.getAvailableFilms().size());
+    }
+
+    @Test
+    public void testCheckoutFilmFails() {
+        assertFalse(testLibrary.checkoutFilm(9999));
+    }
+
+    @Test
+    public void testReturnFilmSuccessful() {
+        testLibrary.checkoutFilm(4321);
+        assertTrue(testLibrary.getCatalogFilms().get(0).isCheckedOut());
+        testLibrary.returnFilm(4321);
+        assertFalse(testLibrary.getCatalogFilms().get(0).isCheckedOut());
+    }
+
+    @Test
+    public void testReturnFilmFails() {
+        assertFalse(testLibrary.returnFilm(9999));
+    }
 }

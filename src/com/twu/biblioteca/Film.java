@@ -15,16 +15,10 @@ public class Film extends Media {
     }
 
     // Override Methods
-    // TODO: 09/05/2018 This override method is redundant
-//    @Override
-//    public String toString() {
-//        return "Film object with:\n" +
-//                "Name: " + this.details.getTitle() + "\n" +
-//                "Year: " + this.details.getYear() + "\n" +
-//                "Director: " + this.details.getDirector() + "\n" +
-//                "Rating: " + this.details.getRating() + "\n" +
-//                "ID: " + this.details.getID();
-//    }
+    @Override
+    public String toString() {
+        return String.format("%-30s %-6s %-25s %6s %6s", this.details.getTitle(), this.details.getYear(), this.details.getDirector(), this.details.getRating(), this.details.getID());
+    }
 
     @Override
     public boolean equals(Object object) {

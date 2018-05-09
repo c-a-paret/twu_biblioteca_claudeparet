@@ -6,17 +6,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class FullTest {
+public class BookAndFilmTests {
 
     private Book testBook;
     private Film testFilm;
-    private Library testLibrary;
 
     @Before
     public void setUp() {
         this.testBook = new Book("Title", "Author", 2000, 1234);
         this.testFilm = new Film("FilmName", 2010, "FilmDirector", 10, 4321);
-        this.testLibrary = new Library();
     }
 
     // Book Tests

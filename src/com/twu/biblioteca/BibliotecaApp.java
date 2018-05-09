@@ -10,7 +10,7 @@ public class BibliotecaApp {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nWelcome to Biblioteca!");
 
-        boolean running = true;
+        boolean running = false;
 
         while (running) {
 
