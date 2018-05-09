@@ -1,9 +1,8 @@
 package com.twu.biblioteca;
 
-public class Book {
+public class Book extends Media {
 
     BookDetails details;
-    private boolean checkedOut = false;
 
     public Book(String title, String author, int yearPublished, int ID) {
         this.details = new BookDetails(title, author, yearPublished, ID);
@@ -14,25 +13,6 @@ public class Book {
     public BookDetails getDetails() {
         return this.details;
     }
-
-    public boolean isCheckedOut() {
-        return this.checkedOut;
-    }
-
-
-
-    // Methods
-
-    public void checkOut() {
-        this.checkedOut = true;
-        System.out.println("Thank You! Enjoy the book.");
-    }
-
-    public void checkIn() {
-        this.checkedOut = false;
-        System.out.println("Thank you for returning the book.");
-    }
-
 
     // Override Methods
 
