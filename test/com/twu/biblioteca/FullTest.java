@@ -61,6 +61,36 @@ public class FullTest {
         assertNotNull(testFilm);
     }
 
+    @Test
+    public void testFilmsAreEqual() {
+        Film comparisonFilm = new Film("FilmName", 2010, "FilmDirector", 10, 4321);
+        assertTrue(testFilm.equals(comparisonFilm));
+    }
+
+    @Test
+    public void testFilmsAreNotEqual() {
+        Film comparisonFilm = new Film("FilmName", 2010, "FilmDirector", 10, 1234);
+        assertFalse(testFilm.equals(comparisonFilm));
+    }
+
+    @Test
+    public void testGetFilmDetailsSucceeds() {
+        assertTrue(testFilm.getDetails().getName().equals("FilmName"));
+        assertTrue(testFilm.getDetails().getDirector().equals("FilmDirector"));
+        assertEquals(2010, testFilm.getDetails().getYear());
+    }
+
+    @Test
+    public void testFilmNotCheckedOut() {
+        assertFalse(testFilm.isCheckedOut());
+    }
+
+    @Test
+    public void testFilmCheckedOutSuccess() {
+        testFilm.checkOut();
+        assertTrue(testFilm.isCheckedOut());
+    }
+
 
 
     // Library Tests

@@ -2,16 +2,16 @@ package com.twu.biblioteca;
 
 public class Book {
 
-    Details details;
+    BookDetails details;
     private boolean checkedOut = false;
 
     public Book(String title, String author, int yearPublished, int ID) {
-        this.details = new Details(title, author, yearPublished, ID);
+        this.details = new BookDetails(title, author, yearPublished, ID);
     }
 
     // Getters
 
-    public Details getDetails() {
+    public BookDetails getDetails() {
         return this.details;
     }
 
