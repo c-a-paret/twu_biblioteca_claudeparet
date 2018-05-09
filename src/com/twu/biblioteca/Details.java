@@ -2,6 +2,8 @@ package com.twu.biblioteca;
 
 public class Details {
 
+    // Fields
+
     private String title;
     private int year;
     private int ID;
@@ -9,6 +11,9 @@ public class Details {
     private String director;
     private int rating;
 
+
+    // Constructors
+    // Book
     private Details(String title, String author, int year, int ID) {
         this.title = title;
         this.year = year;
@@ -17,7 +22,7 @@ public class Details {
         this.director = null;
         this.rating = 0;
     }
-
+    // Film
     private Details(String title, int year, int ID, String director, int rating) {
         this.title = title;
         this.year = year;
@@ -27,6 +32,7 @@ public class Details {
         this.rating = rating;
     }
 
+    // Media type constructor method calls
     public static Details book(String title, String author, int year, int ID) {
         return new Details(title, author, year, ID);
     }
@@ -35,6 +41,8 @@ public class Details {
         return new Details(title, year, ID, director, rating);
     }
 
+
+    // Getters
     public String getTitle() {
         return this.title;
     }

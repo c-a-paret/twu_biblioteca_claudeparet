@@ -2,7 +2,7 @@ package com.twu.biblioteca;
 
 public class Book extends Media {
 
-    Details details;
+    private Details details;
 
     public Book(String title, String author, int yearPublished, int ID) {
         this.details = Details.book(title, author, yearPublished, ID);
