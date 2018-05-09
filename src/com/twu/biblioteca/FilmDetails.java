@@ -36,4 +36,9 @@ public class FilmDetails {
     public int getID() {
         return this.ID;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-30s %-6d %15s %4d %6d", this.getName(), this.getYear(), this.getDirector(), this.getRating(), this.getID());
+    }
 }

@@ -15,15 +15,15 @@ public class Book extends Media {
     }
 
     // Override Methods
-
-    @Override
-    public String toString() {
-        return "Book object with:\n" +
-                "Title: " + this.details.getTitle() + "\n" +
-                "Author: " + this.details.getAuthor() + "\n" +
-                "Year Published: " + this.details.getYear() + "\n" +
-                "ID: " + this.details.getID();
-    }
+    // TODO: 09/05/2018 This override method is redundant
+//    @Override
+//    public String toString() {
+//        return "Book object with:\n" +
+//                "Title: " + this.details.getTitle() + "\n" +
+//                "Author: " + this.details.getAuthor() + "\n" +
+//                "Year Published: " + this.details.getYear() + "\n" +
+//                "ID: " + this.details.getID();
+//    }
 
     @Override
     public boolean equals(Object object) {

@@ -37,7 +37,6 @@ public class BookDetails {
 
     @Override
     public String toString() {
-        //return "Title: " + this.getTitle() + "\nAuthor: " + this.getAuthor() + "\nYear Published: " + this.getYear();
         return String.format("%-30s %-15s %6d %6s", this.getTitle(), this.getAuthor(), this.getYear(), this.getID());
     }
 
