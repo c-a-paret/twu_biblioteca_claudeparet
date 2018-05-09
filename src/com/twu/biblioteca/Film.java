@@ -2,15 +2,15 @@ package com.twu.biblioteca;
 
 public class Film extends Media {
 
-    FilmDetails details;
+    Details details;
 
-    public Film(String name, int year, String director, int rating, int ID) {
-        this.details = new FilmDetails(name, year, director, rating, ID);
+    public Film(String title, int year, String director, int rating, int ID) {
+        this.details = Details.film(title, year, ID, director, rating);
     }
 
     // Getters
 
-    public FilmDetails getDetails() {
+    public Details getDetails() {
         return this.details;
     }
 
