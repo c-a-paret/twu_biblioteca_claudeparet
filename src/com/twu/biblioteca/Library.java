@@ -7,12 +7,16 @@ public class Library {
 
     private List<Book> catalogBooks;
     private List<Film> catalogFilms;
+    private List<UserAccount> userList;
+    private int currentUser = 0;
+    private boolean userSessionActive = false;
 
     public Library() {
 
-        // Just initialise some books and films since and Add() method is not required
+        // Just initialise some books, films and users since and Add() method is not required
         this.catalogBooks = new ArrayList<>();
         this.catalogFilms = new ArrayList<>();
+        this.userList = new ArrayList<>();
 
         this.catalogBooks.add(new Book("The Course of Love", "Alain de Botton", 2016, 1234));
         this.catalogBooks.add(new Book("Daring Greatly", "Brene Brown", 2012, 2345));
@@ -21,6 +25,10 @@ public class Library {
         this.catalogFilms.add(new Film("Moonrise Kingdom", 2012, "Wes Anderson", 9, 4321));
         this.catalogFilms.add(new Film("No Country For Old Men", 2007, "The Coen Brothers", 10, 5432));
         this.catalogFilms.add(new Film("Saw 1", 2004, "James Wan", 9, 6543));
+
+        this.userList.add(new UserAccount("Rupert", "Stranton", "r.stranton@gmail.com", "07932546231", 1012244, 2745));
+        this.userList.add(new UserAccount("Charlene", "McCormack", "charmac@hotmail.com", "07996323212", 1013123, 1324));
+        this.userList.add(new UserAccount("Priscilla", "Letchworth", "prissyletchy@gmx.com", "07846512355", 1018954, 8942));
     }
 
 
@@ -32,6 +40,42 @@ public class Library {
 
     public List<Film> getCatalogFilms() {
         return this.catalogFilms;
+    }
+
+    public List<UserAccount> getUserList() {
+        return userList;
+    }
+
+    public int getCurrentUser() {
+        return currentUser;
+    }
+
+    public boolean isUserSessionActive() {
+        return userSessionActive;
+    }
+
+    // Setters
+
+    public void setUserSessionActive(boolean userSessionActive) {
+        this.userSessionActive = userSessionActive;
+    }
+
+
+    // User Session Methods
+    public void userSignIn(int libraryNumber, int PIN) {
+        for (UserAccount user : this.userList) {
+            if ((user.getDetails().getLibraryNumber() == libraryNumber) && (user.authorise(PIN))) {
+                this.currentUser = libraryNumber;
+                this.setUserSessionActive(true);
+            } else {
+                System.out.println("Membership number or PIN incorrect! Please try again!");
+            }
+        }
+    }
+
+    public void userSignOut() {
+        this.currentUser = 0;
+        this.setUserSessionActive(false);
     }
 
 

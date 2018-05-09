@@ -11,8 +11,6 @@ public class LibraryTest {
 
     @Before
     public void setUp() {
-//        this.testBook = new Book("Title", "Author", 2000, 1234);
-//        this.testFilm = new Film("FilmName", 2010, "FilmDirector", 10, 4321);
         this.testLibrary = new Library();
     }
 
@@ -139,5 +137,38 @@ public class LibraryTest {
     @Test
     public void testReturnFilmFails() {
         assertFalse(testLibrary.returnFilm(9999));
+    }
+
+    // Library USER LIST and USER SESSION tests
+
+    @Test
+    public void testLibraryOpensWithThreeUsersOnList() {
+        assertEquals(3, testLibrary.getUserList().size());
+    }
+
+    @Test
+    public void testUserSessionNotActive() {
+        assertFalse(testLibrary.isUserSessionActive());
+    }
+
+    @Test
+    public void testUserSessionActiveSuccess() {
+        testLibrary.userSignIn(1012244, 2745);
+        assertTrue(testLibrary.isUserSessionActive());
+        assertEquals(1012244, testLibrary.getCurrentUser());
+    }
+
+    @Test
+    public void testUserSessionActiveFailure() {
+        testLibrary.userSignIn(1012244, 9999);
+        assertFalse(testLibrary.isUserSessionActive());
+        assertEquals(0, testLibrary.getCurrentUser());
+    }
+
+    @Test
+    public void testUserSessionSignOut() {
+        testLibrary.userSignOut();
+        assertFalse(testLibrary.isUserSessionActive());
+        assertEquals(0, testLibrary.getCurrentUser());
     }
 }
