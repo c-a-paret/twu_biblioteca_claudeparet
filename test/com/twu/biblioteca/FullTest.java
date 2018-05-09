@@ -8,17 +8,18 @@ import static org.junit.Assert.*;
 
 public class FullTest {
 
-    // Book Tests
-
     Book testBook;
+    Film testFilm;
     Library testLibrary;
 
     @Before
     public void setUp() {
         this.testBook = new Book("Title", "Author", 2000, 1234);
+        this.testFilm = new Film("FilmName", 2010, "FilmDirector", 10, 4321);
         this.testLibrary = new Library();
     }
 
+    // Book Tests
     @Test
     public void testNewBookReturnsBookObject() {
         assertNotNull(testBook);
@@ -52,6 +53,12 @@ public class FullTest {
     public void testBookCheckedOutSuccess() {
         testBook.checkOut();
         assertTrue(testBook.isCheckedOut());
+    }
+
+    // Film Tests
+    @Test
+    public void testNewFilmReturnsFilmObject() {
+        assertNotNull(testFilm);
     }
 
 
