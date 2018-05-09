@@ -9,6 +9,8 @@ public class Library {
     private List<Film> catalogFilms;
 
     public Library() {
+
+        // Just initialise some books and films since and Add() method is not required
         this.catalogBooks = new ArrayList<>();
         this.catalogFilms = new ArrayList<>();
 
