@@ -75,7 +75,7 @@ public class FullTest {
 
     @Test
     public void testGetFilmDetailsSucceeds() {
-        assertTrue(testFilm.getDetails().getName().equals("FilmName"));
+        assertTrue(testFilm.getDetails().getTitle().equals("FilmName"));
         assertTrue(testFilm.getDetails().getDirector().equals("FilmDirector"));
         assertEquals(2010, testFilm.getDetails().getYear());
     }

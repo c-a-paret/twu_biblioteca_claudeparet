@@ -1,28 +1,15 @@
 package com.twu.biblioteca;
 
-public class FilmDetails {
+public class FilmDetails extends Details {
 
-    private String name;
-    private int year;
     private String director;
     private int rating;
-    private int ID;
 
-
-    public FilmDetails(String name, int year, String director, int rating, int ID) {
-        this.name = name;
-        this.year = year;
+    public FilmDetails(String title, int year, String director, int rating, int ID) {
+        super(title, year, ID);
         this.director = director;
         this.rating = rating;
-        this.ID = ID;
-    }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public int getYear() {
-        return this.year;
     }
 
     public String getDirector() {
@@ -33,12 +20,8 @@ public class FilmDetails {
         return this.rating;
     }
 
-    public int getID() {
-        return this.ID;
-    }
-
     @Override
     public String toString() {
-        return String.format("%-30s %-6d %15s %4d %6d", this.getName(), this.getYear(), this.getDirector(), this.getRating(), this.getID());
+        return String.format("%-30s %-6d %15s %4d %6d", this.getTitle(), this.getYear(), this.getDirector(), this.getRating(), this.getID());
     }
 }

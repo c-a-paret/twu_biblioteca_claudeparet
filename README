@@ -1,7 +1,7 @@
 Instructions to push your code to code.google.com
 =================================================
 1. Sign into GitHub and create a new repository
-        Repository name: twu-biblioteca-yourname
+        Repository title: twu-biblioteca-yourname
         Privacy level: Public
         Don't check "Initialize this repository with a README"
         Add .gitignore: None

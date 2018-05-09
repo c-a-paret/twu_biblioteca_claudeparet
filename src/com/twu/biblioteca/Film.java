@@ -19,7 +19,7 @@ public class Film extends Media {
 //    @Override
 //    public String toString() {
 //        return "Film object with:\n" +
-//                "Name: " + this.details.getName() + "\n" +
+//                "Name: " + this.details.getTitle() + "\n" +
 //                "Year: " + this.details.getYear() + "\n" +
 //                "Director: " + this.details.getDirector() + "\n" +
 //                "Rating: " + this.details.getRating() + "\n" +
@@ -29,7 +29,7 @@ public class Film extends Media {
     @Override
     public boolean equals(Object object) {
         Film compareFilm = (Film) object;
-        return (this.details.getName().equals(compareFilm.details.getName()) &&
+        return (this.details.getTitle().equals(compareFilm.details.getTitle()) &&
                 this.details.getYear() == (compareFilm.details.getYear()) &&
                 (this.details.getDirector().equals(compareFilm.details.getDirector()) &&
                 (this.details.getRating() == compareFilm.details.getRating()) &&
