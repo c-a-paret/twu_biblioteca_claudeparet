@@ -22,21 +22,21 @@ public class LibraryTest {
 
     @Test
     public void testLibraryOpensWithThreeBooksOnShelf() {
-        assertEquals(3, testLibrary.getCatalog().size());
+        assertEquals(3, testLibrary.getCatalogBooks().size());
     }
 
     @Test
     public void testAllInitialBooksNotCheckedOut() {
-        assertFalse(testLibrary.getCatalog().get(0).isCheckedOut() &&
-                testLibrary.getCatalog().get(1).isCheckedOut() &&
-                testLibrary.getCatalog().get(2).isCheckedOut());
+        assertFalse(testLibrary.getCatalogBooks().get(0).isCheckedOut() &&
+                testLibrary.getCatalogBooks().get(1).isCheckedOut() &&
+                testLibrary.getCatalogBooks().get(2).isCheckedOut());
     }
 
 
     @Test
     public void testCheckoutBookInCatalog() {
-        testLibrary.getCatalog().get(0).checkOut();
-        assertTrue(testLibrary.getCatalog().get(0).isCheckedOut());
+        testLibrary.getCatalogBooks().get(0).checkOut();
+        assertTrue(testLibrary.getCatalogBooks().get(0).isCheckedOut());
     }
 
 
@@ -44,17 +44,17 @@ public class LibraryTest {
     public void testGetOnlyAvailableBooks() {
         assertEquals(3, testLibrary.getAvailableBooks().size());
 
-        testLibrary.getCatalog().get(0).checkOut();
+        testLibrary.getCatalogBooks().get(0).checkOut();
         assertEquals(2, testLibrary.getAvailableBooks().size());
 
-        testLibrary.getCatalog().get(1).checkOut();
+        testLibrary.getCatalogBooks().get(1).checkOut();
         assertEquals(1, testLibrary.getAvailableBooks().size());
     }
 
     @Test
     public void testSelectAndCheckoutBook() {
         testLibrary.checkoutBook(1234);
-        assertTrue(testLibrary.getCatalog().get(0).isCheckedOut());
+        assertTrue(testLibrary.getCatalogBooks().get(0).isCheckedOut());
     }
 
     @Test
@@ -72,9 +72,9 @@ public class LibraryTest {
     @Test
     public void testReturnBookSuccessful() {
         testLibrary.checkoutBook(1234);
-        assertTrue(testLibrary.getCatalog().get(0).isCheckedOut());
+        assertTrue(testLibrary.getCatalogBooks().get(0).isCheckedOut());
         testLibrary.returnBook(1234);
-        assertFalse(testLibrary.getCatalog().get(0).isCheckedOut());
+        assertFalse(testLibrary.getCatalogBooks().get(0).isCheckedOut());
     }
 
     @Test

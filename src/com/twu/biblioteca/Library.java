@@ -5,19 +5,19 @@ import java.util.List;
 
 public class Library {
 
-    private List<Book> catalog;
+    private List<Book> catalogBooks;
 
     public Library() {
-        this.catalog = new ArrayList<>();
-        this.catalog.add(new Book("The Course of Love", "Alain de Botton", 2016, 1234));
-        this.catalog.add(new Book("Daring Greatly", "Brene Brown", 2012, 2345));
-        this.catalog.add(new Book("Knots", "R. D. Laing", 1970, 3456));
+        this.catalogBooks = new ArrayList<>();
+        this.catalogBooks.add(new Book("The Course of Love", "Alain de Botton", 2016, 1234));
+        this.catalogBooks.add(new Book("Daring Greatly", "Brene Brown", 2012, 2345));
+        this.catalogBooks.add(new Book("Knots", "R. D. Laing", 1970, 3456));
     }
 
 
     public ArrayList<Book> getAvailableBooks() {
         ArrayList<Book> availableTitles = new ArrayList<Book>();
-        for (Book book : this.catalog) {
+        for (Book book : this.catalogBooks) {
             if (!book.isCheckedOut()) {
                 availableTitles.add(book);
             }
@@ -39,14 +39,14 @@ public class Library {
 
     }
 
-    public List<Book> getCatalog() {
-        return this.catalog;
+    public List<Book> getCatalogBooks() {
+        return this.catalogBooks;
     }
 
     public boolean checkoutBook(int ID) {
         for (Book availableBook : getAvailableBooks()) {
             if (availableBook.getDetails().getID() == ID) {
-                for (Book catalogBook : this.getCatalog()) {
+                for (Book catalogBook : this.getCatalogBooks()) {
                     if (catalogBook.getDetails().getID() == ID) {
                         catalogBook.checkOut();
                         return true;
@@ -59,7 +59,7 @@ public class Library {
     }
 
     public boolean returnBook(int ID) {
-        for (Book catalogBook : getCatalog()) {
+        for (Book catalogBook : getCatalogBooks()) {
             if (catalogBook.isCheckedOut() && catalogBook.getDetails().getID() == ID) {
                 catalogBook.checkIn();
                 return true;
