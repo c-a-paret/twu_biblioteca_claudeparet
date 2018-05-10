@@ -17,15 +17,8 @@ public class BibliotecaApp {
         
 
         while (loginPageRunning) {
-            System.out.println("\nSelect an option:\n1. Sign In\n2. Quit");
-            System.out.print("\nEnter your choice (number): ");
 
-            while (!scanner.hasNextInt()) {
-                System.out.println("Please enter a NUMBER: ");
-                scanner.next();
-            }
-
-            int userFirstChoice = scanner.nextInt();
+            int userFirstChoice = loginPageMenu(scanner);
 
             switch (userFirstChoice) {
                 case 1: // Sign in
@@ -149,5 +142,17 @@ public class BibliotecaApp {
                 "=====================\n" +
                 "8. See menu options\n" +
                 "9. Quit");
+    }
+
+    public static int loginPageMenu(Scanner scanner) {
+        System.out.println("\nSelect an option:\n1. Sign In\n2. Quit");
+        System.out.print("\nEnter your choice (number): ");
+
+        while (!scanner.hasNextInt()) {
+            System.out.println("Please enter a NUMBER: ");
+            scanner.next();
+        }
+
+        return scanner.nextInt();
     }
 }
