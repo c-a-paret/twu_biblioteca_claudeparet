@@ -227,9 +227,20 @@ public class LibraryTest {
     }
 
     @Test
-    public void testUserCannReturnFilmTheyHaveCheckedOut() {
+    public void testUserCanReturnFilmTheyHaveCheckedOut() {
         testLibrary.userSignIn(9876543, 2345);
         testLibrary.checkoutFilm(4321);
         assertTrue(testLibrary.returnFilm(4321));
+    }
+
+    @Test
+    public void testViewUserAccountDetailsSuccess() {
+        testLibrary.userSignIn(9876543, 2345);
+        assertTrue(testLibrary.viewUserDetails());
+    }
+
+    @Test
+    public void testViewUserAccountDetailsFailure() {
+        assertFalse(testLibrary.viewUserDetails());
     }
 }

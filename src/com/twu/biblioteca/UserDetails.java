@@ -35,4 +35,9 @@ public class UserDetails {
     public int getLibraryNumber() {
         return this.libraryNumber;
     }
+
+    @Override
+    public String toString() {
+        return String.format("\nAccount Details\n------------------------------\n" + getFirstName().toUpperCase() + " " + getSurname().toUpperCase() + "\n%-7s %-20s\n%-7s %-20s", "Email:", getEmail(), "Phone:", getPhone());
+    }
 }

@@ -83,6 +83,17 @@ public class Library {
         this.setUserSessionActive(false);
     }
 
+    public boolean viewUserDetails() {
+        for (UserAccount user : this.userList) {
+            if (user.getDetails().getLibraryNumber() == this.currentUser) {
+                System.out.println(user.getDetails());
+                return true;
+            }
+        }
+        System.out.println("There was an error retrieving your details.");
+        return false;
+    }
+
 
     // Methods for Books
 

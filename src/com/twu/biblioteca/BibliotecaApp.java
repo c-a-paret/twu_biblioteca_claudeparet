@@ -17,7 +17,7 @@ public class BibliotecaApp {
         
 
         while (loginPageRunning) {
-            System.out.println("Select an option:\n1. Sign In\n2. Quit");
+            System.out.println("\nSelect an option:\n1. Sign In\n2. Quit");
             System.out.print("\nEnter your choice (number): ");
 
             while (!scanner.hasNextInt()) {
@@ -104,6 +104,9 @@ public class BibliotecaApp {
                                     case 8: // See menu options
                                         printMenu();
                                         break;
+                                    case 7: // View account details
+                                            library.viewUserDetails();
+                                            break;
                                     case 9: // Quit
                                         System.out.println("\nThank you for using the Biblioteca app!");
                                         mainAppRunning = false;
@@ -114,8 +117,8 @@ public class BibliotecaApp {
                                         break;
                                 }
                             }
-
-
+                        } else {
+                            //System.out.println("There was a problem with your Library Number or PIN.");
                         }
                         break;
                 case 2: // Quit
