@@ -30,18 +30,20 @@ public class LibraryTest {
 
     @Test
     public void testCheckoutBookInCatalog() {
-        testLibrary.getCatalogBooks().get(0).checkOut();
+        testLibrary.userSignIn(9876543, 2345);
+        testLibrary.getCatalogBooks().get(0).checkOut(9876543);
         assertTrue(testLibrary.getCatalogBooks().get(0).isCheckedOut());
     }
 
     @Test
     public void testGetOnlyAvailableBooks() {
+        testLibrary.userSignIn(9876543, 2345);
         assertEquals(3, testLibrary.getAvailableBooks().size());
 
-        testLibrary.getCatalogBooks().get(0).checkOut();
+        testLibrary.getCatalogBooks().get(0).checkOut(9876543);
         assertEquals(2, testLibrary.getAvailableBooks().size());
 
-        testLibrary.getCatalogBooks().get(1).checkOut();
+        testLibrary.getCatalogBooks().get(1).checkOut(9876543);
         assertEquals(1, testLibrary.getAvailableBooks().size());
     }
 
@@ -93,18 +95,20 @@ public class LibraryTest {
 
     @Test
     public void testCheckoutFilmInCatalog() {
-        testLibrary.getCatalogFilms().get(0).checkOut();
+        testLibrary.userSignIn(9876543, 2345);
+        testLibrary.getCatalogFilms().get(0).checkOut(9876543);
         assertTrue(testLibrary.getCatalogFilms().get(0).isCheckedOut());
     }
 
     @Test
     public void testGetOnlyAvailableFilms() {
+        testLibrary.userSignIn(9876543, 2345);
         assertEquals(3, testLibrary.getAvailableFilms().size());
 
-        testLibrary.getCatalogFilms().get(0).checkOut();
+        testLibrary.getCatalogFilms().get(0).checkOut(9876543);
         assertEquals(2, testLibrary.getAvailableFilms().size());
 
-        testLibrary.getCatalogFilms().get(1).checkOut();
+        testLibrary.getCatalogFilms().get(1).checkOut(9876543);
         assertEquals(1, testLibrary.getAvailableFilms().size());
     }
 
@@ -153,9 +157,9 @@ public class LibraryTest {
 
     @Test
     public void testUserSessionActiveSuccess() {
-        testLibrary.userSignIn(1012244, 2745);
+        testLibrary.userSignIn(9876543, 2345);
         assertTrue(testLibrary.isUserSessionActive());
-        assertEquals(1012244, testLibrary.getCurrentUser());
+        assertEquals(9876543, testLibrary.getCurrentUser());
     }
 
     @Test
@@ -170,5 +174,30 @@ public class LibraryTest {
         testLibrary.userSignOut();
         assertFalse(testLibrary.isUserSessionActive());
         assertEquals(0, testLibrary.getCurrentUser());
+    }
+
+    // Library USER LIST and USER SESSION tests
+
+    @Test
+    public void testUserCheckedOutBookIDCorrect() {
+        testLibrary.userSignIn(9876543, 2345);
+        testLibrary.checkoutBook(1234);
+        assertEquals(9876543, testLibrary.getCatalogBooks().get(0).whoHasCheckOut());
+    }
+
+    @Test
+    public void testUserCheckedOutBookIDIncorrect() {
+        testLibrary.userSignIn(9999999, 2345);
+        testLibrary.checkoutBook(1234);
+        assertEquals(0, testLibrary.getCatalogBooks().get(0).whoHasCheckOut());
+    }
+
+    @Test
+    public void testUserCheckedInBookIDReset() {
+        testLibrary.userSignIn(9876543, 2345);
+        testLibrary.checkoutBook(1234);
+        assertEquals(9876543, testLibrary.getCatalogBooks().get(0).whoHasCheckOut());
+        testLibrary.returnBook(1234);
+        assertEquals(0, testLibrary.getCatalogBooks().get(0).whoHasCheckOut());
     }
 }

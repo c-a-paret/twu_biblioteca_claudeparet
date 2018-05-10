@@ -49,7 +49,7 @@ public class BookAndFilmTests {
 
     @Test
     public void testBookCheckedOutSuccess() {
-        testBook.checkOut();
+        testBook.checkOut(0);
         assertTrue(testBook.isCheckedOut());
     }
 
@@ -85,7 +85,7 @@ public class BookAndFilmTests {
 
     @Test
     public void testFilmCheckedOutSuccess() {
-        testFilm.checkOut();
+        testFilm.checkOut(0);
         assertTrue(testFilm.isCheckedOut());
     }
 }

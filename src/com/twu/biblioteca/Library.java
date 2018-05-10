@@ -115,7 +115,7 @@ public class Library {
             if (availableBook.getDetails().getID() == ID) {
                 for (Book catalogBook : this.getCatalogBooks()) {
                     if (catalogBook.getDetails().getID() == ID) {
-                        catalogBook.checkOut();
+                        catalogBook.checkOut(this.currentUser);
                         return true;
                     }
                 }
@@ -167,7 +167,7 @@ public class Library {
             if (availableFilm.getDetails().getID() == ID) {
                 for (Film catalogFilm : this.getCatalogFilms()) {
                     if (catalogFilm.getDetails().getID() == ID) {
-                        catalogFilm.checkOut();
+                        catalogFilm.checkOut(this.currentUser);
                         return true;
                     }
                 }

@@ -10,13 +10,13 @@ public class BibliotecaApp {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nWelcome to Biblioteca!");
 
-        boolean loginPage = false;
-        boolean running = true;
+        boolean loginPageRunning = false;
+        boolean mainAppRunning = true;
 
         // TODO: 10/05/2018 Should I generalise the request for input - there is a lot of duplication?
         
 
-        while (loginPage) {
+        while (loginPageRunning) {
             System.out.println("Select an option:\n1. Sign In\n2. Quit");
             System.out.print("\nEnter your choice (number): ");
 
@@ -42,13 +42,13 @@ public class BibliotecaApp {
                         }
                         int userPIN = scanner.nextInt();
                         if (library.userSignIn(userLibraryMembershipNumber, userPIN)){
-                            loginPage = false;
-                            running = true;
+                            loginPageRunning = false;
+                            mainAppRunning = true;
                         }
-                    break;
+                        break;
                 case 2: // Quit
                         System.out.println("\nThank you for using the Biblioteca app!");
-                        loginPage = false;
+                        loginPageRunning = false;
                         break;
                 default: // Any other input
                          System.out.println("Please select a valid option!");
@@ -58,7 +58,7 @@ public class BibliotecaApp {
 
         printMenu();
 
-        while (running) {
+        while (mainAppRunning) {
 
             System.out.print("\nEnter your choice (8 to see all menu options): ");
 
@@ -117,7 +117,7 @@ public class BibliotecaApp {
                         break;
                 case 9: // Quit
                         System.out.println("\nThank you for using the Biblioteca app!");
-                        running = false;
+                        mainAppRunning = false;
                         break;
                 default: // Any other choice
                          System.out.println("Select a valid option!");
