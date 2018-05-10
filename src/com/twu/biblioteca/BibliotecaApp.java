@@ -10,8 +10,8 @@ public class BibliotecaApp {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nWelcome to Biblioteca!");
 
-        boolean loginPageRunning = false;
-        boolean mainAppRunning = true;
+        boolean loginPageRunning = true;
+        boolean mainAppRunning = false;
 
         // TODO: 10/05/2018 Should I generalise the request for input - there is a lot of duplication?
         
@@ -44,6 +44,78 @@ public class BibliotecaApp {
                         if (library.userSignIn(userLibraryMembershipNumber, userPIN)){
                             loginPageRunning = false;
                             mainAppRunning = true;
+
+                            printMenu();
+
+                            while (mainAppRunning) {
+
+                                System.out.print("\nEnter your choice (8 to see all menu options): ");
+
+                                while (!scanner.hasNextInt()) {
+                                    System.out.print("Please enter a NUMBER: ");
+                                    scanner.next();
+                                }
+
+                                int userSecondChoice = scanner.nextInt();
+
+                                switch (userSecondChoice) {
+                                    case 1: // List Books
+                                        library.seeAllAvailableBooks();
+                                        break;
+                                    case 2: // Check Out Book
+                                        System.out.print("What is the ID of the book you would like to check out? ");
+                                        while (!scanner.hasNextInt()) {
+                                            System.out.print("Please enter a valid ID: ");
+                                            scanner.next();
+                                        }
+                                        int userBookCheckoutIDChoice = scanner.nextInt();
+                                        library.checkoutBook(userBookCheckoutIDChoice);
+                                        break;
+                                    case 3: // Return Book
+                                        System.out.print("What is the ID of the book you would like to return? ");
+                                        while (!scanner.hasNextInt()) {
+                                            System.out.print("Please enter a valid ID: ");
+                                            scanner.next();
+                                        }
+                                        int userBookReturnIDChoice = scanner.nextInt();
+                                        library.returnBook(userBookReturnIDChoice);
+                                        break;
+                                    case 4: // List Films
+                                        library.seeAllAvailableFilms();
+                                        break;
+                                    case 5: // Check Out Film
+                                        System.out.print("What is the ID of the film you would like to check out? ");
+                                        while (!scanner.hasNextInt()) {
+                                            System.out.print("Please enter a valid ID: ");
+                                            scanner.next();
+                                        }
+                                        int userFilmCheckoutIDChoice = scanner.nextInt();
+                                        library.checkoutFilm(userFilmCheckoutIDChoice);
+                                        break;
+                                    case 6: // Return Film
+                                        System.out.print("What is the ID of the film you would like to return? ");
+                                        while (!scanner.hasNextInt()) {
+                                            System.out.print("Please enter a valid ID: ");
+                                            scanner.next();
+                                        }
+                                        int userFilmReturnIDChoice = scanner.nextInt();
+                                        library.returnFilm(userFilmReturnIDChoice);
+                                        break;
+                                    case 8: // See menu options
+                                        printMenu();
+                                        break;
+                                    case 9: // Quit
+                                        System.out.println("\nThank you for using the Biblioteca app!");
+                                        mainAppRunning = false;
+                                        loginPageRunning = true;
+                                        break;
+                                    default: // Any other choice
+                                        System.out.println("Select a valid option!");
+                                        break;
+                                }
+                            }
+
+
                         }
                         break;
                 case 2: // Quit
@@ -56,74 +128,7 @@ public class BibliotecaApp {
             }
         }
 
-        printMenu();
 
-        while (mainAppRunning) {
-
-            System.out.print("\nEnter your choice (8 to see all menu options): ");
-
-            while (!scanner.hasNextInt()) {
-                System.out.print("Please enter a NUMBER: ");
-                scanner.next();
-            }
-
-            int userSecondChoice = scanner.nextInt();
-
-            switch (userSecondChoice) {
-                case 1: // List Books
-                        library.seeAllAvailableBooks();
-                        break;
-                case 2: // Check Out Book
-                        System.out.print("What is the ID of the book you would like to check out? ");
-                        while (!scanner.hasNextInt()) {
-                            System.out.print("Please enter a valid ID: ");
-                            scanner.next();
-                        }
-                        int userBookCheckoutIDChoice = scanner.nextInt();
-                        library.checkoutBook(userBookCheckoutIDChoice);
-                        break;
-                case 3: // Return Book
-                        System.out.print("What is the ID of the book you would like to return? ");
-                        while (!scanner.hasNextInt()) {
-                            System.out.print("Please enter a valid ID: ");
-                            scanner.next();
-                        }
-                        int userBookReturnIDChoice = scanner.nextInt();
-                        library.returnBook(userBookReturnIDChoice);
-                        break;
-                case 4: // List Films
-                        library.seeAllAvailableFilms();
-                        break;
-                case 5: // Check Out Film
-                        System.out.print("What is the ID of the film you would like to check out? ");
-                        while (!scanner.hasNextInt()) {
-                            System.out.print("Please enter a valid ID: ");
-                            scanner.next();
-                        }
-                        int userFilmCheckoutIDChoice = scanner.nextInt();
-                        library.checkoutFilm(userFilmCheckoutIDChoice);
-                        break;
-                case 6: // Return Film
-                        System.out.print("What is the ID of the film you would like to return? ");
-                        while (!scanner.hasNextInt()) {
-                            System.out.print("Please enter a valid ID: ");
-                            scanner.next();
-                        }
-                        int userFilmReturnIDChoice = scanner.nextInt();
-                        library.returnFilm(userFilmReturnIDChoice);
-                        break;
-                case 8: // See menu options
-                        printMenu();
-                        break;
-                case 9: // Quit
-                        System.out.println("\nThank you for using the Biblioteca app!");
-                        mainAppRunning = false;
-                        break;
-                default: // Any other choice
-                         System.out.println("Select a valid option!");
-                         break;
-            }
-        }
     }
 
     public static void printMenu() {

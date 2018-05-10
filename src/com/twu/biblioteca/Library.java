@@ -127,12 +127,12 @@ public class Library {
 
     public boolean returnBook(int ID) {
         for (Book catalogBook : getCatalogBooks()) {
-            if (catalogBook.isCheckedOut() && catalogBook.getDetails().getID() == ID) {
+            if (catalogBook.isCheckedOut() && catalogBook.getDetails().getID() == ID && this.currentUser == catalogBook.whoHasCheckOut()) {
                 catalogBook.checkIn();
                 return true;
             }
         }
-        System.out.println("That is not a valid book to return.");
+        System.out.println("That is not a valid book to return, or you have not checked this book out.");
         return false;
     }
 
@@ -179,7 +179,7 @@ public class Library {
 
     public boolean returnFilm(int ID) {
         for (Film catalogFilm : getCatalogFilms()) {
-            if (catalogFilm.isCheckedOut() && catalogFilm.getDetails().getID() == ID) {
+            if (catalogFilm.isCheckedOut() && catalogFilm.getDetails().getID() == ID && this.currentUser == catalogFilm.whoHasCheckOut()) {
                 catalogFilm.checkIn();
                 return true;
             }

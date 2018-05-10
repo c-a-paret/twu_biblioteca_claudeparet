@@ -200,4 +200,36 @@ public class LibraryTest {
         testLibrary.returnBook(1234);
         assertEquals(0, testLibrary.getCatalogBooks().get(0).whoHasCheckOut());
     }
+
+    @Test
+    public void testUserCannotReturnBookTheyHaventCheckedOut() {
+        testLibrary.userSignIn(9876543, 2345);
+        testLibrary.checkoutBook(1234);
+        testLibrary.userSignOut();
+        testLibrary.userSignIn(1013123, 1324);
+        assertFalse(testLibrary.returnBook(1234));
+    }
+
+    @Test
+    public void testUserCannotReturnFilmTheyHaventCheckedOut() {
+        testLibrary.userSignIn(9876543, 2345);
+        testLibrary.checkoutFilm(4321);
+        testLibrary.userSignOut();
+        testLibrary.userSignIn(1013123, 1324);
+        assertFalse(testLibrary.returnFilm(4321));
+    }
+
+    @Test
+    public void testUserCanReturnBookTheyHaveCheckedOut() {
+        testLibrary.userSignIn(9876543, 2345);
+        testLibrary.checkoutBook(1234);
+        assertTrue(testLibrary.returnBook(1234));
+    }
+
+    @Test
+    public void testUserCannReturnFilmTheyHaveCheckedOut() {
+        testLibrary.userSignIn(9876543, 2345);
+        testLibrary.checkoutFilm(4321);
+        assertTrue(testLibrary.returnFilm(4321));
+    }
 }
